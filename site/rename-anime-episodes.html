@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Edit Anime Episode Lists</title>
+    </head>
+    <body>
+        <header>
+            <div class="social">
+                <ul>
+                    <li class="social-list-title">Social</li>
+                    <li class="social-list-item"><a href="linkedin.com">linkedlist</a></li>
+                    <li class="social-list-item"><a href="github.com">github</a></li>
+                    <li class="social-list-item"><a href="myanimelist.net">myanimelist</a></li>
+                </ul>
+            </div>
+        </header>
+        <h1 class="main-title">Auto-Rename Anime Episodes.</h1>
+        <div class="searchbar">
+            <!-- <h3 class="main-text">enter the name of an anime</h3> -->
+            <form action="runscript()">
+                <label for="main-text">enter the name of an anime</label><br>
+                <input type="text" name="main-text" id="main-text">
+                <input type="submit" id="search" value="Look it up for me">
+            </form>
+        </div>
+        <div class="backdrop-generated-block">
+            <div class="section-title">
+                <a href=var(anidblink)>anidb</a>
+            </div>
+            <div class="section-content">
+                <p></p>
+            </div>
+        </div>
+        <div class="backdrop-generated-block">
+            <div class="section-title">
+                <a href=var(wikipedia)>wikipedia</a>
+            </div>
+            <div class="section-content">
+                <p></p>
+            </div>
+        </div>
+        <div>
+            <div class="section-title">
+                <a href=var(myanimelist)>myanimelist</a>
+            </div>
+            <div class="section-content">
+                <p></p>
+            </div>
+        </div>
+    </body>
+</html>
