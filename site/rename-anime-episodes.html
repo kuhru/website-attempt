@@ -6,11 +6,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@200&family=Raleway&display=swap" rel="stylesheet">
         <style>
             .overlay-opacity {
-                z-index: 1;
+                z-index: 20;
                 position: fixed;
                 display: none;
                 top: 0; left: 0; right: 0; bottom: 0;
                 background-color: rgba(0,0,0,0.5);
+            }
+            #img-owner-name {
+                text-align: right;
+                bottom: 0; right: 0;
+                margin-top: 0px; margin-bottom: 5px; margin-right: 12px;
+                position: fixed;
+                font-family: 'Catamaran', sans-serif;
+                color: white;
+                font-size: 20px;
+            }
+            .credit-link {
+                text-decoration: none;
+                color: #008cff;
             }
             .social {
                 font-family: 'Catamaran', sans-serif;
@@ -23,7 +36,7 @@
             }
             #mySidebar {
                 background-color: rgb(36, 36, 36);
-                z-index: 2;
+                z-index: 20;
                 display: block;
                 position: fixed;
                 height: 100%;
@@ -42,46 +55,54 @@
             }
             .navbar-close {
                 text-align: right;
-                display: block;
                 padding: 12px;
-                left: 0; right: 0; top: 0;
-                background-color: #69737e;
+                left: 0; right: 0;
             }
             button {
                 outline: none;
             }
-            a, a:visited, a:active, a:link {
+            .social-list-item, .social-list-item:visited, .social-list-item:active {
                 text-decoration: none;
                 color: #89c6ff;
                 display: block;
                 padding: 12px 16px;
                 left: 0; right: 0;
-                background-color: #69737e ;
-
+                background-color: #69737e;
             }
-            a:hover {
+            .social-list-item:hover {
                 background-color: #3f444b;
             }
-            /* body {
-                background-image: url("79322109_p40.jpg");
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-position: center;
-                background-size: 100%;
-            } */
-            .bg {
-                z-index: -1;
-                position: fixed;
+            .last-item {
+                position: absolute;
+                bottom: 0;
+            }
+            body, html {        
                 height: 100%;
-                top: 0; left: 0; right: 0; bottom: 0;
-                margin-top: 56px;
+                margin: 0;
+            }
+            .bg {
+                background-image: url("79322109_p40.jpg");
+                height: 100%;
+                margin: 0;
+                z-index: 0;
+                position: absolute;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-attachment: scroll;
+                background-position: center;
+                background-size: cover;
+            }
+            .main-content {
+                z-index: 10;
+                position: relative;
+                
             }
             .main-title {
                 font-family: 'Raleway', sans-serif;                
-                margin: 100px auto 20px auto;
+                margin: 200px auto 20px auto;
                 text-align: center;
                 line-height: 1.2;
-                height: 100px
+                height: 100px;
             }
             .site-logo {
                 height: 120px;
@@ -189,9 +210,6 @@
         </style>
     </head>
     <body>
-        <div>
-            <img class="bg" src="79322109_p40.jpg" alt="background">
-        </div>
         <script>
             var animeName;
             function sidebar_open() {
@@ -240,54 +258,64 @@
                 text_active();
             }
         </script>
-        <header>
-            <div class="overlay-opacity" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
-            <div class="social">
-                <button class="navbar-open" onclick="sidebar_open()">&#9776;</button>
-                <div id="mySidebar">
-                    <a class="navbar-close" href="#" onclick="sidebar_close()">CLOSE</a>
-                    <a class="social-list-item" target="_blank" href="https://www.linkedin.com/in/alekhkarn/" rel="noopener noreferrer">linkedin</a>
-                    <a class="social-list-item" target="_blank" href="https://www.github.com/kuhru" rel="noopener noreferrer">github</a>
-                    <a class="social-list-item" target="_blank" href="https://www.myanimelist.net/profile/kuhru" rel="noopener noreferrer">myanimelist</a>
+        <div class="bg">
+            <header>
+                <div class="overlay-opacity" onclick="sidebar_close()" style="cursor:pointer" id="myOverlay"></div>
+                <div class="social">
+                    <button class="navbar-open" onclick="sidebar_open()">&#9776;</button>
+                    <div id="mySidebar">
+                        <a class="social-list-item navbar-close" href="#" onclick="sidebar_close()">CLOSE</a>
+                        <a class="social-list-item" target="_blank" href="https://www.linkedin.com/in/alekhkarn/" rel="noopener noreferrer">linkedin</a>
+                        <a class="social-list-item" target="_blank" href="https://www.github.com/kuhru" rel="noopener noreferrer">github</a>
+                        <a class="social-list-item" target="_blank" href="https://www.myanimelist.net/profile/kuhru" rel="noopener noreferrer">myanimelist</a>
+                        <a class="social-list-item last-item" target="_blank" href="https://www.pixiv.net/en/artworks/79322109">一&nbsp色&nbsp(background&nbspartst)</a>
+                    </div>
+                </div>
+            </header>
+            <div class="main-content">
+                <div class="main-title">
+                    <img class="site-logo" src="animerenlogo.png" alt="logo-of-site" >
+                    <!-- <h1>Auto&#8209Rename<br>Anime&nbspEpisodes.</h1> -->
+                </div>
+                <div class="centered">
+                    <div class="group">
+                        <input class="textbox" type="text" id="anime-name" required="required"\>
+                        <label class="textbar" for="name" onclick="star_typing()">enter name of an anime</label>
+                        <div class="bar"></div>
+                        <button class="submit" id="submit" type="submit" value="submit" onclick="get_input_anime()">Search</button>
+                    </div>
                 </div>
             </div>
-        </header>
-        <div class="main-title">
-            <img class="site-logo" src="animerenlogo.png" alt="logo-of-site" >
-            <!-- <h1>Auto&#8209Rename<br>Anime&nbspEpisodes.</h1> -->
-        </div>
-        <div class="centered">
-            <div class="group">
-                <input class="textbox" type="text" id="anime-name" required="required"\>
-                <label class="textbar" for="name" onclick="star_typing()">enter name of an anime</label>
-                <div class="bar"></div>
-                <button class="submit" id="submit" type="submit" value="submit" onclick="get_input_anime()">Search</button>
+            <br>
+            <!-- <div class="backdrop-generated-block">
+                <div class="section-title">
+                    <a href=var(anidblink)>anidb</a>
+                </div>
+                <div class="section-content">
+                    <p></p>
+                </div>
+            </div>
+            <div class="backdrop-generated-block">
+                <div class="section-title">
+                    <a href=var(wikipedia)>wikipedia</a>
+                </div>
+                <div class="section-content">
+                    <p></p>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">
+                    <a href=var(myanimelist)>myanimelist</a>
+                </div>
+                <div class="section-content">
+                    <p></p>
+                </div>
+            </div> -->
+            <div class="img-credits">
+                <p id="img-owner-name">
+                    image credits:  @ <a class="credit-link" target="_blank" href="https://www.pixiv.net/en/artworks/79322109">一色</a> All rights reserved.
+                </p>
             </div>
         </div>
-        <br>
-        <!-- <div class="backdrop-generated-block">
-            <div class="section-title">
-                <a href=var(anidblink)>anidb</a>
-            </div>
-            <div class="section-content">
-                <p></p>
-            </div>
-        </div>
-        <div class="backdrop-generated-block">
-            <div class="section-title">
-                <a href=var(wikipedia)>wikipedia</a>
-            </div>
-            <div class="section-content">
-                <p></p>
-            </div>
-        </div>
-        <div>
-            <div class="section-title">
-                <a href=var(myanimelist)>myanimelist</a>
-            </div>
-            <div class="section-content">
-                <p></p>
-            </div>
-        </div> -->
     </body>
 </html>
