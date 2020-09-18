@@ -525,16 +525,16 @@
                 }
             }
             function searchAnime(typ) {
-                document.getElementById("confirm-box").style.display = "none";
-                document.getElementById("myOverlay").style.display = "none";
+                document.getElementById("confirm-box").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
                 if (typ == 'yep') {
                     document.getElementById("anime-name").value = '';
                     document.getElementById("anime-name").blur();
                     document.getElementById("grid-container").style.display = "grid";
                     var x = document.getElementsByClassName("section-content");
                     for (var i = 0; i < x.length; i++) {
-                        x[i].style.display = "none";
-                        document.getElementById("info-" + String(i+1)).style.display = "none";
+                        x[i].style.display = "block";
+                        document.getElementById("info-" + String(i+1)).style.display = "block";
                         }
                     document.getElementById("separate").style.padding = "0px";
                 }
